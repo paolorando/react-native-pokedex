@@ -1,21 +1,27 @@
-import { StyleSheet, Text } from "react-native"
+import { StyleSheet, Text, TextStyle } from "react-native"
 
 type Props = {
     variant?: keyof typeof styles,
     color?: string,
-    children: React.ReactNode;
+    style?: TextStyle
+    children: React.ReactNode,
 }
 
-export function ThemedText ({variant, color, children, ...rest}: Props) {
-    return <Text style={styles[variant ?? 'body3']} {...rest}>
+export function ThemedText ({variant, color, style, children, ...rest}: Props) {
+    return (
+        <Text 
+            style={[styles[variant ?? 'body3'],
+            {color: color ?? "grayDark"}, style]}
+            {...rest}>
             {children}
-        </Text>;
+        </Text>
+    );
 }
 
 const styles = StyleSheet.create({
     body3: {
         fontSize: 10,
-        lineHeight: 16
+        lineHeight: 16,
     },
     headline: {
         fontSize: 24,
