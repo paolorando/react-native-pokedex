@@ -26,5 +26,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    radioInner: {}
+    radioInner: {
+        borderRadius: 6,
+        width: 6,
+        height: 6,
+    }
 });
