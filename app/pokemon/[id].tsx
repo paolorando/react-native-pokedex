@@ -111,16 +111,18 @@ export default function Pokemon() {
                             Base stats
                         </ThemedText>
 
-                        <View>
-                            <PokemonStat name={"HP"} value={45} color={colorType} />
-                            <PokemonStat name={"HP"} value={0} color={colorType} />
-                            <PokemonStat name={"HP"} value={255} color={colorType} />
-                            <PokemonStat name={"HP"} value={45} color={colorType} />
-                            <PokemonStat name={"HP"} value={45} color={colorType} />
+                        <View style={{ alignSelf: "stretch" }}>
+                            {pokemon?.stats.map((stat) => (
+                                <PokemonStat
+                                    key={stat.stat.name}
+                                    name={stat.stat.name}
+                                    value={stat.base_stat}
+                                    color={colorType}
+                                />
+                            ))}
                         </View>
                     </Card>
                 </View>
-                <Text>Pokemon { params.id }</Text>
             </View>
         </RootView>
     );
@@ -150,6 +152,7 @@ const styles = StyleSheet.create({
     card: {
         paddingHorizontal: 20,
         paddingTop: 60,
+        paddingBottom: 20,
         gap: 16,
         alignItems: "center",
     }
